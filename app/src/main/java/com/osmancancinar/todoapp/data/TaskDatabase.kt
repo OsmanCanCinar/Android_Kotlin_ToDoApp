@@ -22,6 +22,7 @@ abstract class TaskDatabase : RoomDatabase() {
             super.onCreate(db)
             val dao = database.get().taskDao()
 
+            //delete later
             applicationScope.launch {
                 dao.insert(Task("Repair the sink",isCompleted = true))
                 dao.insert(Task("Call Buse", isImportant = true))

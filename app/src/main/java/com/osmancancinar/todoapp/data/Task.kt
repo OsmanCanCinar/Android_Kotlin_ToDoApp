@@ -15,7 +15,6 @@ data class Task(
     val creationTime: Long = System.currentTimeMillis(),
     @PrimaryKey(autoGenerate = true) val id: Int = 0
 ) : Parcelable {
-
     val creationDate: String
         get() = DateFormat.getDateTimeInstance().format(creationTime)
 }
