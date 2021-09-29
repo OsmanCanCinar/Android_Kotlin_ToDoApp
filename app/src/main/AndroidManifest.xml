@@ -3,7 +3,7 @@
     package="com.osmancancinar.todoapp">
 
     <application
-        android:name=".ToDoApplication"
+        android:name=".ActivatorClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

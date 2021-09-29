@@ -4,6 +4,6 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class ToDoApplication : Application() {
+class ActivatorClass : Application() {
     //this activates Hilt
 }

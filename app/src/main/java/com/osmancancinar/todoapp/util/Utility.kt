@@ -5,7 +5,7 @@ import androidx.appcompat.widget.SearchView
 inline fun SearchView.onQueryTextChanged(crossinline listener : (String) -> Unit) {
     this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
         override fun onQueryTextSubmit(query: String?): Boolean {
-            //Reason we disable this function is we don't need a submit button to do the search
+            //Reason we disable this function is, we don't need a submit button to do the search.
             return true
         }
 
@@ -13,6 +13,5 @@ inline fun SearchView.onQueryTextChanged(crossinline listener : (String) -> Unit
             listener(newText.orEmpty())
             return true
         }
-
     })
 }

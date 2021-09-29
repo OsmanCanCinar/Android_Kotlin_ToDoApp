@@ -8,18 +8,22 @@ import com.osmancancinar.todoapp.data.PreferencesManager
 import com.osmancancinar.todoapp.data.SortOrder
 import com.osmancancinar.todoapp.data.Task
 import com.osmancancinar.todoapp.data.TaskDao
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the class and @Inject before the constructor. For the latest version of Hilt!
     private val taskDao : TaskDao,
     private val preferencesManager: PreferencesManager
 ) : ViewModel() {
-    // default sort
     val searchQuery = MutableStateFlow("")
     val preferencesFlow = preferencesManager.preferencesFlow
+
+    private val taskEventChannel = Channel<TasksEvent>()
+    val tasksEvent = taskEventChannel.receiveAsFlow()
 
     private val tasksFlow = combine(
         searchQuery,
@@ -47,6 +51,19 @@ class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the c
 
     fun onTaskCheckedChanged(task : Task, isChecked: Boolean) = viewModelScope.launch {
         taskDao.update(task.copy(isCompleted = isChecked))
+    }
+
+    fun onTaskSwiped(task: Task) = viewModelScope.launch {
+        taskDao.delete(task)
+        taskEventChannel.send(TasksEvent.ShowUndoDeleteTaskMessage(task))
+    }
+
+    sealed class TasksEvent {
+        data class ShowUndoDeleteTaskMessage(val task: Task) : TasksEvent()
+    }
+
+    fun onUndoDeleteClicked(task: Task) = viewModelScope.launch{
+        taskDao.insert(task)
     }
 }
 

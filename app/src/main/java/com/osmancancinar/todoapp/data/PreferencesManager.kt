@@ -12,12 +12,17 @@ import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/*
+    Instead of using shared preferences, we are using data store of the jetpack libraries.
+ */
+
 enum class SortOrder { BY_NAME, BY_DATE }
 
 data class FilterPreferences(val sortOrder: SortOrder, val hideCompleted: Boolean)
 
 @Singleton
 class PreferencesManager @Inject constructor(@ApplicationContext context: Context){
+
     private val dataStore = context.createDataStore("user_preferences")
 
     val preferencesFlow = dataStore.data

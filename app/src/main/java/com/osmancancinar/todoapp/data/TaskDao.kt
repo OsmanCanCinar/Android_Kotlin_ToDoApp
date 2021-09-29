@@ -3,6 +3,10 @@ package com.osmancancinar.todoapp.data
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
+/*
+    This is where we write our data access object, they execute the standard and custom queries.
+ */
+
 @Dao
 interface TaskDao {
 
