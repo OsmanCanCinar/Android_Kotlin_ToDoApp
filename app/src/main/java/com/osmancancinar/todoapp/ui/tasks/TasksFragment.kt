@@ -24,15 +24,20 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
+//Hilt will be uses to Inject to this fragment
 @AndroidEntryPoint
+//this is not an automatically generated fragment so, we gave the layout in the constructor.
 class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter.OnItemClickListener {
 
+    //Instance of our view model.
     private val viewModel : TasksViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //view binding but since we used primary constructor to connect the layout, we don't need .inflate we only need .bind
         val binding = FragmentTodoListBinding.bind(view)
+
         val taskAdapter = RecyclerViewAdapter(this)
         binding.apply {
             recycler_view_todo_list.apply {
@@ -77,20 +82,25 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
         setHasOptionsMenu(true)
     }
 
+    //In order to create our menu, we inflated the menu. Then we casted search view
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.fragment_menu,menu)
         val searchItem = menu.findItem(R.id.search)
         val searchView = searchItem.actionView as SearchView
+
+        //we are calling our custom method by SearchView and passing the word that we are searching for as a string parameter.
         searchView.onQueryTextChanged {
             viewModel.searchQuery.value = it
         }
 
+        //It receives the status of the hide completed tasks from view model. the view model gets this from data store that we've created before.
         viewLifecycleOwner.lifecycleScope.launch {
             menu.findItem(R.id.hide_completed).isChecked =
                 viewModel.preferencesFlow.first().hideCompleted
         }
     }
 
+    //This is where we handle the selected menu item's actions. Since we're applying MVVM Architecture, we let the view model handle the data.
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.sort_by_name -> {
@@ -114,10 +124,12 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
         }
     }
 
+    //Handling the Item Click by using view model's method.
     override fun onItemClick(task: Task) {
         viewModel.onTaskSelected(task)
     }
 
+    //We check the checkbox by using our view model and pass the task with the isChecked as parameter.
     override fun onCheckBoxClick(task: Task, isChecked: Boolean) {
         viewModel.onTaskCheckedChanged(task, isChecked)
     }

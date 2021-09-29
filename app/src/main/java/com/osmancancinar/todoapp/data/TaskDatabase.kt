@@ -9,14 +9,18 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Provider
 
+//This is where we create our database, and specify the data it will hold with the version of it.
 @Database(entities = [Task::class], version = 1)
+//It must be abstract class and implement the Room Database
 abstract class TaskDatabase : RoomDatabase() {
 
+    //we create an abstract instance of our database access object.
     abstract fun taskDao(): TaskDao
 
-    class Callback @Inject constructor(
+    //This callback class will be injected where it is a dependency.
+    class Callback @Inject constructor( // Constructor Injection
         private val database: Provider<TaskDatabase>,
-        @ApplicationScope private val applicationScope: CoroutineScope
+        @ApplicationScope private val applicationScope: CoroutineScope //ApplicationScope Annotation is our custom annotation, and it specifies which scope to create.
     ) : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)

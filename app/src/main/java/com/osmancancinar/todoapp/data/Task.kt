@@ -6,20 +6,22 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 import java.text.DateFormat
 
-/*
-    Task data class is an Entity for our Room database. It's the representation of the table and it's columns. We use Parcelable because we are not streaming
-    data by using network, we are only using local storage. We specify the primary key to be auto generated. At last, we dynamically create our time stamp.
- */
-
+//We specify the name of the table in the Room(SQLite database).
 @Entity(tableName = "tasks")
+//Parcelize lets us to wrap the class's data and pass it to another Activity/Class.
 @Parcelize
+//It's meta data so we use it as "data" class.
 data class Task(
+    //the attributes of the class and their default values.(Columns of the table)
     val taskName: String,
     val isImportant: Boolean = false,
     val isCompleted: Boolean = false,
     val creationTime: Long = System.currentTimeMillis(),
+
+    //We specify that our primary key will be id and we want it to start from 0 and increase by default.
     @PrimaryKey(autoGenerate = true) val id: Int = 0
 ) : Parcelable {
+    //this is where we dynamically convert creation time to creation date as a time stamp.
     val creationDate: String
         get() = DateFormat.getDateTimeInstance().format(creationTime)
 }
