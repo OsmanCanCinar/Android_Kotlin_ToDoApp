@@ -7,6 +7,8 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -35,6 +37,7 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
 
     //Instance of our view model.
     private val viewModel : TasksViewModel by viewModels()
+    private lateinit var searchView: SearchView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,6 +74,12 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
             }
         }
 
+        setFragmentResultListener("add_edit_request") { _, bundle ->
+            val result = bundle.getInt("add_edit_result")
+            viewModel.onAddEditResult(result)
+
+        }
+
         viewModel.tasks.observe(viewLifecycleOwner) {
             taskAdapter.submitList(it)
         }
@@ -91,6 +100,13 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
                         val action = TasksFragmentDirections.actionTasksFragmentToDetailFragment2(event.task,getString(R.string.edit_task))
                         findNavController().navigate(action)
                     }
+                    is TasksViewModel.TasksEvent.ShowTaskSavedConfirmationMessage -> {
+                        Snackbar.make(requireView(),event.msg,Snackbar.LENGTH_SHORT).show()
+                    }
+                    TasksViewModel.TasksEvent.OnDeleteAllClicked -> {
+                        val action = TasksFragmentDirections.actionGlobalDeleteFragment22()
+                        findNavController().navigate(action)
+                    }
                 }.exhaustive
             }
         }
@@ -101,8 +117,15 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
     //In order to create our menu, we inflated the menu. Then we casted search view
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.fragment_menu,menu)
+
         val searchItem = menu.findItem(R.id.search)
-        val searchView = searchItem.actionView as SearchView
+        searchView = searchItem.actionView as SearchView
+
+        val pendingQuery = viewModel.searchQuery.value
+        if (pendingQuery != null && pendingQuery.isNotEmpty()) {
+            searchItem.expandActionView()
+            searchView.setQuery(pendingQuery,false)
+        }
 
         //we are calling our custom method by SearchView and passing the word that we are searching for as a string parameter.
         searchView.onQueryTextChanged {
@@ -133,7 +156,7 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
                 true
             }
             R.id.delete_completed -> {
-
+                viewModel.onDeleteAllClicked()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -148,5 +171,10 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
     //We check the checkbox by using our view model and pass the task with the isChecked as parameter.
     override fun onCheckBoxClick(task: Task, isChecked: Boolean) {
         viewModel.onTaskCheckedChanged(task, isChecked)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        searchView.setOnQueryTextListener(null)
     }
 }

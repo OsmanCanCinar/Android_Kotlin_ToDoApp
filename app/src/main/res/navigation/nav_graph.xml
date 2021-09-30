@@ -28,4 +28,8 @@
             android:name="title"
             app:argType="string" />
     </fragment>
+    <dialog
+        android:id="@+id/deleteFragment2"
+        android:name="com.osmancancinar.todoapp.ui.deletion.DeleteFragment"
+        android:label="DeleteFragment" /><action android:id="@+id/action_global_deleteFragment22" app:destination="@id/deleteFragment2"/>
 </navigation>

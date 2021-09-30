@@ -7,6 +7,8 @@ import com.osmancancinar.todoapp.data.PreferencesManager
 import com.osmancancinar.todoapp.data.SortOrder
 import com.osmancancinar.todoapp.data.Task
 import com.osmancancinar.todoapp.data.TaskDao
+import com.osmancancinar.todoapp.ui.ADD_TASK_RESULT_OK
+import com.osmancancinar.todoapp.ui.EDIT_TASK_RESULT_OK
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -77,8 +79,10 @@ class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the c
     //cannot be reproduced as a class.
     sealed class TasksEvent {
         object NavigateToAddNewTask : TasksEvent()
+        object OnDeleteAllClicked : TasksEvent()
         data class NavigateToEditTask(val task: Task) : TasksEvent()
         data class ShowUndoDeleteTaskMessage(val task: Task) : TasksEvent()
+        data class ShowTaskSavedConfirmationMessage(val msg: String) : TasksEvent()
     }
 
     //after deleting a task we save it to TaskEvent and re-insert it.
@@ -88,6 +92,21 @@ class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the c
 
     fun navigateToDetailFragment() = viewModelScope.launch {
         taskEventChannel.send(TasksEvent.NavigateToAddNewTask)
+    }
+
+    fun onAddEditResult(result: Int) {
+        when(result) {
+            ADD_TASK_RESULT_OK -> showTaskSavedConfirmationMessage("Task Added")
+            EDIT_TASK_RESULT_OK -> showTaskSavedConfirmationMessage("Task Updated")
+        }
+    }
+
+    private fun showTaskSavedConfirmationMessage(text: String) = viewModelScope.launch {
+        taskEventChannel.send(TasksEvent.ShowTaskSavedConfirmationMessage(text))
+    }
+
+   fun onDeleteAllClicked() = viewModelScope.launch{
+        taskEventChannel.send(TasksEvent.OnDeleteAllClicked)
     }
 }
 
