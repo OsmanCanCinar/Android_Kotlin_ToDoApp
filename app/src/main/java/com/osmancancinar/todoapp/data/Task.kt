@@ -14,6 +14,7 @@ import java.text.DateFormat
 data class Task(
     //the attributes of the class and their default values.(Columns of the table)
     val taskName: String,
+    val taskDescription: String,
     val isImportant: Boolean = false,
     val isCompleted: Boolean = false,
     val creationTime: Long = System.currentTimeMillis(),

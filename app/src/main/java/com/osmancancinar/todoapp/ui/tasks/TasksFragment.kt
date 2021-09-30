@@ -9,6 +9,9 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +20,7 @@ import com.osmancancinar.todoapp.R
 import com.osmancancinar.todoapp.data.SortOrder
 import com.osmancancinar.todoapp.data.Task
 import com.osmancancinar.todoapp.databinding.FragmentTodoListBinding
+import com.osmancancinar.todoapp.util.exhaustive
 import com.osmancancinar.todoapp.util.onQueryTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_todo_list.*
@@ -61,6 +65,10 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
                     viewModel.onTaskSwiped(task)
                 }
             }).attachToRecyclerView(recyclerViewTodoList)
+
+            fabAdd.setOnClickListener {
+                viewModel.navigateToDetailFragment()
+            }
         }
 
         viewModel.tasks.observe(viewLifecycleOwner) {
@@ -71,11 +79,19 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
             viewModel.tasksEvent.collect { event ->
                 when(event) {
                     is TasksViewModel.TasksEvent.ShowUndoDeleteTaskMessage -> {
-                        Snackbar.make(requireView(),"Task Deleted",Snackbar.LENGTH_LONG).setAction("UNDO") {
+                        Snackbar.make(requireView(),getString(R.string.deleted),Snackbar.LENGTH_LONG).setAction(getString(R.string.undo)) {
                             viewModel.onUndoDeleteClicked(event.task)
                         }.show()
                     }
-                }
+                    is TasksViewModel.TasksEvent.NavigateToAddNewTask -> {
+                        val action = TasksFragmentDirections.actionTasksFragmentToDetailFragment2(null,getString(R.string.new_task))
+                        findNavController().navigate(action)
+                    }
+                    is TasksViewModel.TasksEvent.NavigateToEditTask -> {
+                        val action = TasksFragmentDirections.actionTasksFragmentToDetailFragment2(event.task,getString(R.string.edit_task))
+                        findNavController().navigate(action)
+                    }
+                }.exhaustive
             }
         }
 

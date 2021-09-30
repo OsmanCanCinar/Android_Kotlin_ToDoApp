@@ -8,4 +8,10 @@
     <string name="sort_by_creation_date">Sort by creation date</string>
     <string name="hide_completed">Hide Completed</string>
     <string name="delete_completed">Delete completed</string>
+    <string name="task_description">Task description</string>
+    <string name="created">\"Created: \"</string>
+    <string name="deleted">Task Deleted</string>
+    <string name="undo">UNDO</string>
+    <string name="new_task">New Task</string>
+    <string name="edit_task">Edit Task</string>
 </resources>

@@ -1,9 +1,8 @@
 package com.osmancancinar.todoapp.ui.tasks
 
+import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.osmancancinar.todoapp.data.PreferencesManager
 import com.osmancancinar.todoapp.data.SortOrder
 import com.osmancancinar.todoapp.data.Task
@@ -18,11 +17,14 @@ import kotlinx.coroutines.launch
 //ViewModelInject means This class has dependencies on TaskDao and Preferences Objects. While Creating TaskViewModel, these initializations will ve handled(injected) by hilt.
 class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the class and @Inject before the constructor. For the latest version of Hilt!
     private val taskDao : TaskDao,
-    private val preferencesManager: PreferencesManager
+    private val preferencesManager: PreferencesManager,
+    @Assisted private val state: SavedStateHandle
 ) : ViewModel() {
 
     //MutableStateFlow is like live data this is how we will hold our search query and we assign an initial value.
-    val searchQuery = MutableStateFlow("")
+    //val searchQuery = MutableStateFlow("")
+
+    val searchQuery = state.getLiveData("searchQuery","")
     //this is where we retrieve and save our sort preferences to data store.
     val preferencesFlow = preferencesManager.preferencesFlow
 
@@ -32,7 +34,7 @@ class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the c
 
     //we can use combine while receiving multiple types of data from a flow.
     private val tasksFlow = combine(
-        searchQuery,
+        searchQuery.asFlow(),
         preferencesFlow
     ) {
         query, filterPreferences ->
@@ -56,8 +58,8 @@ class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the c
     }
 
     //this is how we edit an existing task when its selected. by navigation to edit fragment.
-    fun onTaskSelected(task : Task) {
-
+    fun onTaskSelected(task : Task) = viewModelScope.launch {
+        taskEventChannel.send(TasksEvent.NavigateToEditTask(task))
     }
 
     //if a task is checked/unchecked.
@@ -74,12 +76,18 @@ class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the c
 
     //cannot be reproduced as a class.
     sealed class TasksEvent {
+        object NavigateToAddNewTask : TasksEvent()
+        data class NavigateToEditTask(val task: Task) : TasksEvent()
         data class ShowUndoDeleteTaskMessage(val task: Task) : TasksEvent()
     }
 
     //after deleting a task we save it to TaskEvent and re-insert it.
-    fun onUndoDeleteClicked(task: Task) = viewModelScope.launch{
+    fun onUndoDeleteClicked(task: Task) = viewModelScope.launch {
         taskDao.insert(task)
+    }
+
+    fun navigateToDetailFragment() = viewModelScope.launch {
+        taskEventChannel.send(TasksEvent.NavigateToAddNewTask)
     }
 }
 
