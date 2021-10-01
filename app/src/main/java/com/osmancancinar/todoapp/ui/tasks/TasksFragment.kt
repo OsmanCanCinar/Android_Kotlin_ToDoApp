@@ -72,6 +72,10 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
             fabAdd.setOnClickListener {
                 viewModel.navigateToDetailFragment()
             }
+
+            fabInfo.setOnClickListener {
+                viewModel.navigateToTrainingFragment()
+            }
         }
 
         setFragmentResultListener("add_edit_request") { _, bundle ->
@@ -107,6 +111,10 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
                     }
                     TasksViewModel.TasksEvent.OnDeleteAllClicked -> {
                         val action = TasksFragmentDirections.actionGlobalDeleteFragment22()
+                        findNavController().navigate(action)
+                    }
+                    TasksViewModel.TasksEvent.NavigateToTraining -> {
+                        val action = TasksFragmentDirections.actionGlobalTrainingFragment()
                         findNavController().navigate(action)
                     }
                 }.exhaustive

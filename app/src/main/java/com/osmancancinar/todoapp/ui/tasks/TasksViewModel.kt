@@ -80,6 +80,7 @@ class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the c
     //cannot be reproduced as a class.
     sealed class TasksEvent {
         object NavigateToAddNewTask : TasksEvent()
+        object NavigateToTraining : TasksEvent()
         object OnDeleteAllClicked : TasksEvent()
         data class NavigateToEditTask(val task: Task) : TasksEvent()
         data class ShowUndoDeleteTaskMessage(val task: Task) : TasksEvent()
@@ -93,6 +94,10 @@ class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the c
 
     fun navigateToDetailFragment() = viewModelScope.launch {
         taskEventChannel.send(TasksEvent.NavigateToAddNewTask)
+    }
+
+    fun navigateToTrainingFragment() = viewModelScope.launch {
+        taskEventChannel.send(TasksEvent.NavigateToTraining)
     }
 
     fun onAddEditResult(result: Int, add: String, update: String) {

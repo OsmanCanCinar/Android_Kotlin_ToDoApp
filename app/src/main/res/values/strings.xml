@@ -12,6 +12,7 @@
     <string name="created">Created:</string>
     <string name="deleted">Task Deleted</string>
     <string name="undo">UNDO</string>
+    <string name="task_title">Tasks</string>
     <string name="new_task">New Task</string>
     <string name="edit_task">Edit Task</string>
     <string name="confirm">Confirm deletion</string>
@@ -20,4 +21,14 @@
     <string name="yes">Yes</string>
     <string name="added">Task Added</string>
     <string name="updated">Task Updated</string>
+    <string name="features">Features</string>
+    <string name="instructions">1) You can add a new task by tapping on the plus sign at the bottom right then give it a name, description and you can mark it as important. To save it, tap to the check sign at the right bottom.\n\n
+                                2) You can edit a task by tapping on it, then save it by tapping on the check sign at the right bottom. \n\n
+                                3) You can tap to the left side of the task to mark as important and you can reverse it by tapping on it again. \n\n
+                                4) You can delete the task by swiping to the right or left. \n\n
+                                5) You can search a task by tapping on the magnifier icon at the top and writing the task name.\n\n
+                                6) You can sort your task list by tapping on the sort icon and sort it by date or name. \n\n
+                                7) You can hide the completed tasks by clicking on the options icon at the top right corner of the screen and checking the hide completed box. \n\n
+                                8) You can delete the completed tasks by clicking on the options icon at the top right corner of the screen and tapping on the delete completed option. \n\n
+    </string>
 </resources>

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/tasksFragment"
         android:name="com.osmancancinar.todoapp.ui.tasks.TasksFragment"
-        android:label="Tasks"
+        android:label="@string/task_title"
         tools:layout="@layout/fragment_todo_list" >
         <action
             android:id="@+id/action_tasksFragment_to_detailFragment2"
@@ -32,4 +32,8 @@
         android:id="@+id/deleteFragment2"
         android:name="com.osmancancinar.todoapp.ui.deletion.DeleteFragment"
         android:label="DeleteFragment" /><action android:id="@+id/action_global_deleteFragment22" app:destination="@id/deleteFragment2"/>
+    <dialog
+        android:id="@+id/trainingFragment"
+        android:name="com.osmancancinar.todoapp.ui.training.TrainingFragment"
+        android:label="TrainingFragment" /><action android:id="@+id/action_global_trainingFragment" app:destination="@id/trainingFragment"/>
 </navigation>
