@@ -20,8 +20,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_ToDoApp)
         setContentView(R.layout.activity_main)
 
+        //up navigation Implementation for navigation graph
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         navController = navHostFragment.findNavController()
 
@@ -33,5 +35,6 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
+//Our Constant Values that we can use all around the App
 const val ADD_TASK_RESULT_OK = Activity.RESULT_FIRST_USER // value 1
 const val EDIT_TASK_RESULT_OK = Activity.RESULT_FIRST_USER + 1 // 2

@@ -76,7 +76,9 @@ class TasksFragment : Fragment(R.layout.fragment_todo_list), RecyclerViewAdapter
 
         setFragmentResultListener("add_edit_request") { _, bundle ->
             val result = bundle.getInt("add_edit_result")
-            viewModel.onAddEditResult(result)
+            val add= getString(R.string.added)
+            val update = getString(R.string.updated)
+            viewModel.onAddEditResult(result,add,update)
 
         }
 

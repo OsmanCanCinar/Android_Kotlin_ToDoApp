@@ -3,6 +3,7 @@ package com.osmancancinar.todoapp.ui.tasks
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.osmancancinar.todoapp.R
 import com.osmancancinar.todoapp.data.PreferencesManager
 import com.osmancancinar.todoapp.data.SortOrder
 import com.osmancancinar.todoapp.data.Task
@@ -94,10 +95,10 @@ class TasksViewModel @ViewModelInject constructor( //@HiltViewModel before the c
         taskEventChannel.send(TasksEvent.NavigateToAddNewTask)
     }
 
-    fun onAddEditResult(result: Int) {
+    fun onAddEditResult(result: Int, add: String, update: String) {
         when(result) {
-            ADD_TASK_RESULT_OK -> showTaskSavedConfirmationMessage("Task Added")
-            EDIT_TASK_RESULT_OK -> showTaskSavedConfirmationMessage("Task Updated")
+            ADD_TASK_RESULT_OK -> showTaskSavedConfirmationMessage(add)
+            EDIT_TASK_RESULT_OK -> showTaskSavedConfirmationMessage(update)
         }
     }
 

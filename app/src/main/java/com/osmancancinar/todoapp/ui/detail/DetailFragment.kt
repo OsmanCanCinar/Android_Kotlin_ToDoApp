@@ -33,7 +33,7 @@ class DetailFragment : Fragment(R.layout.fragment_task_detail){
             checkboxImportant.isChecked = viewModel.taskImportance
             checkboxImportant.jumpDrawablesToCurrentState()
             textViewDateCreated.isVisible = viewModel.task != null
-            textViewDateCreated.text = """${getString(R.string.created)}${viewModel.task?.creationDate}"""
+            textViewDateCreated.text = getString(R.string.created) + " " +viewModel.task?.creationDate
 
             editTextTaskName.addTextChangedListener {
                 viewModel.taskName = it.toString()

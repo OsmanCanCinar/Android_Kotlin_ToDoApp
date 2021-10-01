@@ -9,9 +9,15 @@
     <string name="hide_completed">Hide Completed</string>
     <string name="delete_completed">Delete completed</string>
     <string name="task_description">Task description</string>
-    <string name="created">\"Created: \"</string>
+    <string name="created">Created:</string>
     <string name="deleted">Task Deleted</string>
     <string name="undo">UNDO</string>
     <string name="new_task">New Task</string>
     <string name="edit_task">Edit Task</string>
+    <string name="confirm">Confirm deletion</string>
+    <string name="are_you_sure">Do you really want to delete all completed tasks?</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="added">Task Added</string>
+    <string name="updated">Task Updated</string>
 </resources>

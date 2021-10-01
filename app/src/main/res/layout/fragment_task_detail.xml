@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/rain"
     tools:context=".ui.detail.DetailFragment">
 
     <LinearLayout
@@ -17,6 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/task_name"
+            android:textColorHint="@color/greenery"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/cadet_blue"
             android:inputType="text"
             android:layout_marginBottom="5dp"/>
 
@@ -27,6 +31,10 @@
             android:hint="@string/task_description"
             android:gravity="top|left"
             android:inputType="text|textMultiLine"
+            android:textColorHint="@color/greenery"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/cadet_blue"
+            android:textStyle="italic"
             android:minLines="6"
             android:maxLines="10"/>
 
@@ -34,6 +42,7 @@
             android:id="@+id/checkbox_important"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="@string/important_task" />
 
 
@@ -41,6 +50,7 @@
             android:id="@+id/text_view_date_created"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             tools:text="Date Created: "
             android:layout_marginTop="5dp"/>
 
