@@ -17,7 +17,7 @@ class TrainingFragment : DialogFragment(){
         AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.features))
             .setMessage(getString(R.string.instructions))
-            .setNegativeButton("Dismiss",null)
+            .setNegativeButton(getString(R.string.dismiss),null)
             .create()
 
 }

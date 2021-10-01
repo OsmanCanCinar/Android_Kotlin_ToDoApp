@@ -16,7 +16,7 @@
     <string name="new_task">New Task</string>
     <string name="edit_task">Edit Task</string>
     <string name="confirm">Confirm deletion</string>
-    <string name="are_you_sure">Do you really want to delete all completed tasks?</string>
+    <string name="are_you_sure">Do you want to delete all completed tasks?</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
     <string name="added">Task Added</string>
@@ -31,4 +31,5 @@
                                 7) You can hide the completed tasks by clicking on the options icon at the top right corner of the screen and checking the hide completed box. \n\n
                                 8) You can delete the completed tasks by clicking on the options icon at the top right corner of the screen and tapping on the delete completed option. \n\n
     </string>
+    <string name="dismiss">DISMISS</string>
 </resources>

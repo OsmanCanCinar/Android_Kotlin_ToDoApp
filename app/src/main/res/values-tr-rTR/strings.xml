@@ -23,13 +23,14 @@
     <string name="updated">Görev Güncellendi</string>
     <string name="features">Özellikler</string>
     <string name="task_title">Görevler</string>
-    <string name="instructions">1) Yeni görev eklemek için, sağ altta bulunan artı işaretine tıklayınız. İsim, açıklama ve önemli olup olmadığını işaretledikten sonra, sağ altta bulunan butonu kullanarak kayıt ediniz.\n\n
+    <string name="instructions">1) Yeni görev eklemek için sağ altta bulunan artı işaretine tıklayınız. İsim, açıklama ve önemli olup olmadığını işaretledikten sonra, sağ altta bulunan butonu kullanarak kayıt ediniz.\n\n
                                 2) Listede bulunan bir görevin üzerine tıklayarak düzenleyebilirsiniz ve kayıt etmek için sağ altta bulunan butonu kullanınız. \n\n
                                 3) Listede bulunan görevlerin sol tarafında ki kutuya tıklayarak önemli olarak işaretleyebilirsiniz. Tekrardan tıklayarak geri çevireblirsiniz. \n\n
                                 4) Görevi sağa veya sola kaydırarak silebilirsiniz. \n\n
                                 5) Büyüteç simgesine basarak istedğiniz görevin ismini girip arayabilirsiniz.\n\n
-                                6) Sırlama işaretine basarak görev listenizi, isme veya oluşturulma tarihine göre sıralayabilirsiniz. \n\n
+                                6) Sıralama işaretine basarak görev listenizi, isme veya oluşturulma tarihine göre sıralayabilirsiniz. \n\n
                                 7) Sağ üstte bulunan seçenekeler menüsünden, tamamlanmış görevleri Tamamlananları gizle kutusunu işaretleyerek gizleyebilirsiniz. \n\n
                                 8) Tamamlanmış görevleri sağ üstte bulunan seçenekeler menüsünden, Tamamlananları sil seçeneğine tıklayarak toplu bir şekilde silebilirsiniz. \n\n
     </string>
+    <string name="dismiss">KAPAT</string>
 </resources>
