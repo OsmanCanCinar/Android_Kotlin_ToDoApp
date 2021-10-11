@@ -1,35 +1,36 @@
 <resources>
     <string name="app_name">To Do App</string>
-    <string name="task_name">Task Name</string>
-    <string name="important_task">Important Task</string>
+    <string name="task_title">Tasks</string>
     <string name="search">Search</string>
     <string name="sort">Sort</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_creation_date">Sort by creation date</string>
     <string name="hide_completed">Hide Completed</string>
     <string name="delete_completed">Delete completed</string>
-    <string name="task_description">Task description</string>
-    <string name="created">Created:</string>
-    <string name="deleted">Task Deleted</string>
-    <string name="undo">UNDO</string>
-    <string name="task_title">Tasks</string>
-    <string name="new_task">New Task</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="confirm">Confirm deletion</string>
-    <string name="are_you_sure">Do you want to delete all completed tasks?</string>
-    <string name="cancel">Cancel</string>
-    <string name="yes">Yes</string>
-    <string name="added">Task Added</string>
-    <string name="updated">Task Updated</string>
     <string name="features">Features</string>
-    <string name="instructions">1) You can add a new task by tapping on the plus sign at the bottom right then give it a name, description and you can mark it as important. To save it, tap to the check sign at the right bottom.\n\n
+    <string name="instructions">1) You can add a new task by tapping on the plus sign at the bottom right then give it a name, description, and you can mark it as important. To save it, tap the check sign at the right bottom.\n\n
                                 2) You can edit a task by tapping on it, then save it by tapping on the check sign at the right bottom. \n\n
-                                3) You can tap to the left side of the task to mark as important and you can reverse it by tapping on it again. \n\n
+                                3) You can tap to the left side of the task to mark it as important, and you can reverse it by tapping on it again.\n\n
                                 4) You can delete the task by swiping to the right or left. \n\n
                                 5) You can search a task by tapping on the magnifier icon at the top and writing the task name.\n\n
                                 6) You can sort your task list by tapping on the sort icon and sort it by date or name. \n\n
-                                7) You can hide the completed tasks by clicking on the options icon at the top right corner of the screen and checking the hide completed box. \n\n
-                                8) You can delete the completed tasks by clicking on the options icon at the top right corner of the screen and tapping on the delete completed option. \n\n
+                                7) You can hide the completed tasks by clicking on the options icon in the top right corner of the screen and checking the hide completed box. \n\n
+                                8) You can delete the completed tasks by clicking on the options icon in the top right corner of the screen and tapping on the delete completed option. \n\n
     </string>
     <string name="dismiss">DISMISS</string>
+    <string name="new_task">New Task</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="task_name">Task Name</string>
+    <string name="task_description">Task description</string>
+    <string name="important_task">Important Task</string>
+    <string name="created">Created:</string>
+    <string name="name_warning">Name cannot be empty!</string>
+    <string name="added">Task Added!</string>
+    <string name="updated">Task Updated!</string>
+    <string name="deleted">Task Deleted!</string>
+    <string name="undo">UNDO</string>
+    <string name="are_you_sure">Do you want to delete all completed tasks?</string>
+    <string name="confirm">Confirm deletion</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
 </resources>

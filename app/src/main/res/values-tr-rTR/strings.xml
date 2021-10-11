@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">To Do App</string>
-    <string name="task_name">Görev Adı</string>
-    <string name="important_task">Önemli Görev</string>
+    <string name="task_title">Görevler</string>
     <string name="search">Ara</string>
     <string name="sort">Sırala</string>
     <string name="sort_by_name">İsme Göre Sırala</string>
     <string name="sort_by_creation_date">Oluşturulma Tarihine Göre Sırala</string>
-    <string name="hide_completed">Tamamlananları Gizle</string>
-    <string name="delete_completed">Tamamlanları Sil</string>
-    <string name="task_description">Görevin Detayı</string>
-    <string name="created">Oluşturuldu:</string>
-    <string name="deleted">Görev Silindi</string>
-    <string name="undo">GERİ AL</string>
-    <string name="new_task">Yeni Görev</string>
-    <string name="edit_task">Görevi Düzenle</string>
-    <string name="confirm">Silme İşlemini Doğrula</string>
-    <string name="are_you_sure">Tamamlanmış görevleri silmek istediğinizden emin misiniz?</string>
-    <string name="cancel">İptal</string>
-    <string name="yes">Evet</string>
-    <string name="added">Görev Eklendi</string>
-    <string name="updated">Görev Güncellendi</string>
+    <string name="hide_completed">Tamamlanmış görevleri gizle</string>
+    <string name="delete_completed">Tamamlanmış görevleri sil</string>
     <string name="features">Özellikler</string>
-    <string name="task_title">Görevler</string>
     <string name="instructions">1) Yeni görev eklemek için sağ altta bulunan artı işaretine tıklayınız. İsim, açıklama ve önemli olup olmadığını işaretledikten sonra, sağ altta bulunan butonu kullanarak kayıt ediniz.\n\n
                                 2) Listede bulunan bir görevin üzerine tıklayarak düzenleyebilirsiniz ve kayıt etmek için sağ altta bulunan butonu kullanınız. \n\n
-                                3) Listede bulunan görevlerin sol tarafında ki kutuya tıklayarak önemli olarak işaretleyebilirsiniz. Tekrardan tıklayarak geri çevireblirsiniz. \n\n
+                                3) Listede bulunan görevlerin sol tarafındaki kutuya tıklayarak önemli olarak işaretleyebilirsiniz. Tekrardan tıklayarak geri çevirebilirsiniz. \n\n
                                 4) Görevi sağa veya sola kaydırarak silebilirsiniz. \n\n
-                                5) Büyüteç simgesine basarak istedğiniz görevin ismini girip arayabilirsiniz.\n\n
+                                5) Büyüteç simgesine basarak istediğiniz görevin ismini girip arayabilirsiniz.\n\n
                                 6) Sıralama işaretine basarak görev listenizi, isme veya oluşturulma tarihine göre sıralayabilirsiniz. \n\n
-                                7) Sağ üstte bulunan seçenekeler menüsünden, tamamlanmış görevleri Tamamlananları gizle kutusunu işaretleyerek gizleyebilirsiniz. \n\n
-                                8) Tamamlanmış görevleri sağ üstte bulunan seçenekeler menüsünden, Tamamlananları sil seçeneğine tıklayarak toplu bir şekilde silebilirsiniz. \n\n
+                                7) Sağ üstte bulunan seçenekler menüsünden, tamamlanmış görevleri tamamlananları gizle kutusunu işaretleyerek gizleyebilirsiniz. \n\n
+                                8) Tamamlanmış görevleri sağ üstte bulunan seçenekler menüsünden, tamamlananları sil seçeneğine tıklayarak toplu bir şekilde silebilirsiniz. \n\n
     </string>
     <string name="dismiss">KAPAT</string>
+    <string name="new_task">Yeni Görev</string>
+    <string name="edit_task">Görevi Düzenle</string>
+    <string name="task_name">Görevin Adı</string>
+    <string name="task_description">Görevin Detayı</string>
+    <string name="important_task">Önemli Görev</string>
+    <string name="created">Oluşturuldu:</string>
+    <string name="name_warning">İsim boş bırakılamaz!</string>
+    <string name="added">Görev Eklendi!</string>
+    <string name="updated">Görev Güncellendi!</string>
+    <string name="deleted">Görev Silindi!</string>
+    <string name="undo">GERİ AL</string>
+    <string name="are_you_sure">Tamamlanmış görevleri silmek istediğinizden emin misiniz?</string>
+    <string name="confirm">Silme İşlemini Doğrula</string>
+    <string name="cancel">İptal</string>
+    <string name="yes">Evet</string>
 </resources>

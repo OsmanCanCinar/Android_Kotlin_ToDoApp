@@ -48,7 +48,8 @@ class DetailFragment : Fragment(R.layout.fragment_task_detail){
             }
 
             fabSave.setOnClickListener {
-                viewModel.onSaveClick()
+                val name_error = getString(R.string.name_warning)
+                viewModel.onSaveClick(name_error)
             }
         }
 

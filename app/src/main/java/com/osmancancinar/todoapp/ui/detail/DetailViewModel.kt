@@ -5,6 +5,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.osmancancinar.todoapp.R
 import com.osmancancinar.todoapp.data.Task
 import com.osmancancinar.todoapp.data.TaskDao
 import com.osmancancinar.todoapp.ui.ADD_TASK_RESULT_OK
@@ -41,18 +42,11 @@ class DetailViewModel @ViewModelInject constructor(
     val addEditTaskEvent = addEditTaskEventChannel.receiveAsFlow()
 
 
-    fun onSaveClick() {
+    fun onSaveClick(name_error: String) {
         if (taskName.isBlank()) {
-            showInvalidInputMessage("Name cannot be empty")
+            showInvalidInputMessage(name_error)
             return
         }
-
-        /*
-        if (taskDescription.isBlank()) {
-            showInvalidInputMessage("Description cannot be empty")
-            return
-        }
-         */
 
         if (task != null) {
             val updatedTask = task.copy(

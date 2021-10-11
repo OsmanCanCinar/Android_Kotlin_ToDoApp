@@ -24,7 +24,7 @@ abstract class TaskDatabase : RoomDatabase() {
     ) : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-            val dao = database.get().taskDao()
+            //val dao = database.get().taskDao()
 
            
         }
